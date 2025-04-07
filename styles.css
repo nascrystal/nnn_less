@@ -1,0 +1,114 @@
+body {
+  margin: 0;
+  font-family: sans-serif;
+}
+header {
+  background-color: #333;
+}
+.menu {
+  background-color: #333;
+}
+.menu .main-menu {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+}
+.menu .main-menu > li {
+  position: relative;
+}
+.menu li a {
+  display: block;
+  padding: 15px 20px;
+  color: white;
+  text-decoration: none;
+  white-space: nowrap;
+}
+.menu li:hover {
+  background-color: #444;
+}
+.menu .has-submenu:hover > .submenu {
+  display: flex;
+}
+.submenu {
+  display: none;
+  position: absolute;
+  background-color: #444;
+  top: 100%;
+  left: 0;
+  min-width: 180px;
+  flex-direction: column;
+  padding: 0;
+  list-style: none;
+  z-index: 999;
+}
+.submenu .has-submenu {
+  position: relative;
+}
+.submenu .has-submenu > .submenu {
+  top: 0;
+  left: 100%;
+}
+.animation-section {
+  padding: 50px 20px;
+  background-color: #f7f7f7;
+  text-align: center;
+}
+.animation-section h2 {
+  font-size: 28px;
+  margin-bottom: 30px;
+}
+.cards {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+.card {
+  background-color: #fff;
+  padding: 40px 20px;
+  width: 200px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, background-color 0.3s ease;
+  opacity: 0;
+  transform: translateY(50px);
+  animation: fadeSlideIn 1s forwards;
+}
+.card:nth-child(2) {
+  animation-delay: 0.3s;
+}
+.card:nth-child(3) {
+  animation-delay: 0.6s;
+}
+.card:hover {
+  transform: scale(1.1) rotate(1deg);
+  background-color: #e0f7fa;
+}
+@keyframes fadeSlideIn {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.circle-animation {
+  margin-top: 60px;
+  height: 200px;
+  position: relative;
+}
+.circle {
+  width: 40px;
+  height: 40px;
+  background-color: #ff4081;
+  border-radius: 50%;
+  position: absolute;
+  animation: orbit 4s linear infinite;
+}
+@keyframes orbit {
+  0% {
+    transform: rotate(0deg) translateX(80px) rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg) translateX(80px) rotate(-360deg);
+  }
+}

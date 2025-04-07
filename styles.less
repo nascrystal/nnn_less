@@ -1,0 +1,165 @@
+@main-bg: #333;
+@submenu-bg: #444;
+@link-color: white;
+@hover-bg: #444;
+@card-hover-bg: #e0f7fa;
+@card-bg: #fff;
+@font: sans-serif;
+@circle-color: #ff4081;
+
+// Міксіни
+.rounded(@radius) {
+    border-radius: @radius;
+}
+
+.shadow(@shadow...) {
+    box-shadow: @shadow;
+}
+
+// Загальні стилі
+body {
+    margin: 0;
+    font-family: @font;
+}
+
+// Хедер
+header {
+    background-color: @main-bg;
+}
+
+// Меню
+.menu {
+    background-color: @main-bg;
+
+    .main-menu {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        display: flex;
+
+        > li {
+            position: relative;
+        }
+    }
+
+    li {
+        a {
+            display: block;
+            padding: 15px 20px;
+            color: @link-color;
+            text-decoration: none;
+            white-space: nowrap;
+        }
+
+        &:hover {
+            background-color: @hover-bg;
+        }
+    }
+
+    .has-submenu {
+        &:hover > .submenu {
+            display: flex;
+        }
+    }
+}
+
+// Підменю
+.submenu {
+    display: none;
+    position: absolute;
+    background-color: @submenu-bg;
+    top: 100%;
+    left: 0;
+    min-width: 180px;
+    flex-direction: column;
+    padding: 0;
+    list-style: none;
+    z-index: 999;
+
+    .has-submenu {
+        position: relative;
+
+        > .submenu {
+            top: 0;
+            left: 100%;
+        }
+    }
+}
+
+// Анімаційна секція
+.animation-section {
+    padding: 50px 20px;
+    background-color: #f7f7f7;
+    text-align: center;
+
+    h2 {
+        font-size: 28px;
+        margin-bottom: 30px;
+    }
+}
+
+// Картки
+.cards {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.card {
+    background-color: @card-bg;
+    padding: 40px 20px;
+    width: 200px;
+    .rounded(10px);
+    .shadow(0 0 10px rgba(0,0,0,0.1));
+    transition: transform 0.3s ease, background-color 0.3s ease;
+    opacity: 0;
+    transform: translateY(50px);
+    animation: fadeSlideIn 1s forwards;
+
+    &:nth-child(2) {
+        animation-delay: 0.3s;
+    }
+
+    &:nth-child(3) {
+        animation-delay: 0.6s;
+    }
+
+    &:hover {
+        transform: scale(1.1) rotate(1deg);
+        background-color: @card-hover-bg;
+    }
+}
+
+// Анімація карток
+@keyframes fadeSlideIn {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+// Анімація по колу
+.circle-animation {
+    margin-top: 60px;
+    height: 200px;
+    position: relative;
+}
+
+.circle {
+    width: 40px;
+    height: 40px;
+    background-color: @circle-color;
+    border-radius: 50%;
+    position: absolute;
+    animation: orbit 4s linear infinite;
+}
+
+@keyframes orbit {
+    0% {
+        transform: rotate(0deg) translateX(80px) rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg) translateX(80px) rotate(-360deg);
+    }
+}
